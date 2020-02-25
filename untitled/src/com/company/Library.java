@@ -1,68 +1,66 @@
 package com.company;
 
-import com.company.Book;
-
 public class Library implements Comparable<Library> {
-    Book[] thisBooks;
+  Book[] thisBooks;
+  int numberOfBooks;
+  boolean isSignedUp;
+  int elapsed = 0;
+  int libID;
+  int totalBookScore = 0;
+  private long signUpTime;
+  private int dailyScanLimit;
+  public Library(
+      int libID, int numberOfBooks, int signUpTime, int dailyScanLimit, boolean isSignedUp) {
+    this.libID = libID;
+    this.numberOfBooks = numberOfBooks;
+    this.signUpTime = signUpTime;
+    this.dailyScanLimit = dailyScanLimit;
+    this.isSignedUp = isSignedUp;
+  }
 
-    public int getNumberOfBooks() {
-        return numberOfBooks;
+  public int getNumberOfBooks() {
+    return numberOfBooks;
+  }
+
+  public int findTotalBookScore() {
+    for (Book book : thisBooks) {
+      totalBookScore += book.getScore();
     }
+    return totalBookScore;
+  }
 
-    int numberOfBooks;
-    private int signUpTime;
-    private int dailyScanLimit;
-    boolean isSignedUp;
-    int elapsed = 0;
-    int libID;
-    int totalBookScore = 0;
+  public Book[] getBooks() {
+    return thisBooks;
+  }
 
-    public int findTotalBookScore(){
-        for(Book book : thisBooks){
-            totalBookScore += book.getScore();
-        }
-        return totalBookScore;
-    }
+  public int getSignUpTime() {
+    return (int) signUpTime;
+  }
 
-    public Book[] getBooks() {
-        return thisBooks;
-    }
+  public int getDailyScanLimit() {
+    return dailyScanLimit;
+  }
 
-    public int getSignUpTime() {
-        return signUpTime;
-    }
+  public boolean isSignedUp() {
+    return isSignedUp;
+  }
 
-    public int getDailyScanLimit() {
-        return dailyScanLimit;
-    }
+  public void setSignedUp() {
+    this.isSignedUp = true;
+  }
 
-    public boolean isSignedUp() {
-        return isSignedUp;
-    }
-
-    public void setSignedUp() {
-        this.isSignedUp = true;
-    }
-
-    public Library(int libID, int numberOfBooks, int signUpTime, int dailyScanLimit, boolean isSignedUp) {
-        this.libID = libID;
-        this.numberOfBooks = numberOfBooks;
-        this.signUpTime = signUpTime;
-        this.dailyScanLimit = dailyScanLimit;
-        this.isSignedUp = isSignedUp;
-    }
-//
-//        @Override
-//    public int compareTo(Library o) {
-//        return this.getSignUpTime() <= o.getSignUpTime() ? -1 : 1;
-////    }
-//    @Override
-//    public int compareTo(Library o) {
-//        return this.findTotalBookScore() >= o.findTotalBookScore()? -1 : 1;
-//    }
-@Override
-public int compareTo(Library o) {
-    return this.getDailyScanLimit() >= o.getDailyScanLimit() ? -1 : 1;
-}
+  //
+  @Override
+  public int compareTo(Library o) {
+    return this.getSignUpTime() <= o.getSignUpTime() ? -1 : 1;
+  }
+  //    @Override
+  //    public int compareTo(Library o) {
+  //        return this.findTotalBookScore() >= o.findTotalBookScore()? -1 : 1;
+  //    }
+  /*@Override
+  public int compareTo(Library o) {
+      return this.getDailyScanLimit() >= o.getDailyScanLimit() ? -1 : 1;
+  }*/
 
 }

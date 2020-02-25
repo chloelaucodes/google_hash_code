@@ -8,7 +8,8 @@ import java.util.Scanner;
 public class Main {
    static int librarySize =0 ;
     public static void main(String[] args) throws IOException {
-        File file = new File("C:\\Users\\aayus\\untitled\\src\\com\\company\\example3.txt");
+        File file = new File("/Users/chloelau/google_hash_code/untitled/src/com/company/example" +
+                ".txt");
         Scanner scanner = new Scanner(file);
 
 
@@ -45,8 +46,10 @@ public class Main {
             if (freeToScan) {
                 Library top = getTop(libraries);
                 top.elapsed += 1;
+                freeToScan = false;
                 if (top.elapsed == top.getSignUpTime()){
                     top.setSignedUp();
+                    freeToScan = true;
                 }
                 }
 
@@ -78,7 +81,8 @@ public class Main {
                 }
                 output.append("\n");
             }
-            String outFile = "C:\\Users\\aayus\\untitled\\src\\com\\company\\output3_1.txt";
+            String outFile = "/Users/chloelau/google_hash_code/untitled/src/com/company/output1" +
+                    ".txt";
             BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
             writer.write(output.toString());
             writer.close();
